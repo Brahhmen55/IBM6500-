@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>R Class Assignments Dashboard</title>
+    <title>RStudio Project Hub</title>
     <style>
         :root {
             --bg-color: #f4f6f9;
@@ -46,13 +46,13 @@
             margin: 0;
         }
 
-        .assignment-list {
+        .project-list {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
 
-        .assignment-card {
+        .project-card {
             background: var(--card-bg);
             border-radius: 8px;
             padding: 20px;
@@ -66,23 +66,23 @@
             border: 1px solid #e2e8f0;
         }
 
-        .assignment-card:hover {
+        .project-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
             border-color: var(--primary);
         }
 
-        .assignment-info h3 {
+        .project-info h3 {
             margin: 0 0 5px 0;
             color: var(--text-main);
             font-size: 1.25rem;
         }
 
-        .assignment-card:hover .assignment-info h3 {
+        .project-card:hover .project-info h3 {
             color: var(--primary);
         }
 
-        .assignment-info p {
+        .project-info p {
             margin: 0;
             color: var(--text-muted);
             font-size: 0.95rem;
@@ -98,7 +98,7 @@
             transition: background-color 0.2s;
         }
 
-        .assignment-card:hover .view-btn {
+        .project-card:hover .view-btn {
             background-color: var(--primary-hover);
         }
     </style>
@@ -107,58 +107,30 @@
 
     <div class="container">
         <header>
-            <!-- Change these to your actual course details -->
-            <h1>IBM 6300</h1>
-            <p class="subtitle"> Assignments | Luis Berumen </p>
+            <h1>RStudio Project Hub</h1>
+            <p class="subtitle">A landing page template for published RStudio projects and reports.</p>
         </header>
 
-        <main class="assignment-list">
-            
-            <!-- Assignment 1 Card -->
-            <!-- The href automatically looks inside the folder for index.html -->
-            <a href="test/" class="assignment-card">
-                <div class="assignment-info">
-                    <h3>W02: ML Fundamentals</h3>
+        <main class="project-list">
+            <!-- Keep one card per published project folder -->
+            <a href="Introduction-to-Positron/" class="project-card">
+                <div class="project-info">
+                    <h3>Introduction to Positron</h3>
+                    <p>Current published project.</p>
                 </div>
                 <span class="view-btn">View Report</span>
             </a>
 
-            <!-- Assignment 2 Card -->
-            <a href="M02-Indepth-Literate-Program" class="assignment-card">
-                <div class="assignment-info">
-                    <h3>Reflection on Regression Fundamentals and Ch5 Spending Data</h3>
-                </div>
-                <span class="view-btn">View Report</span>
-          
-            </a>
-            
-            <!-- Assignment 3 Card -->
-            <a href="M05-Table-Viz" class="assignment-card">
-                <div class="assignment-info">
-                    <h3>M05-Visualizing Data with Tables</h3>
+            <!-- Template card: duplicate this block for each future RStudio publish -->
+            <a href="your-project-folder/" class="project-card">
+                <div class="project-info">
+                    <h3>Project Title</h3>
+                    <p>Short project description.</p>
                 </div>
                 <span class="view-btn">View Report</span>
             </a>
-            
-            <!-- Assignment 4 Card -->
-            <a href="ITP" class="assignment-card">
-                <div class="assignment-info">
-                    <h3>ITP-W04-Initial Store Setup</h3>
-                </div>
-                <span class="view-btn">View Report</span>
-            </a>
-            
-             <!-- Assignment 5 Card -->
-            <a href="M04" class="assignment-card">
-                <div class="assignment-info">
-                    <h3>W04-1: Reflection on Logistic Regression and Ch8 (Preprocessing with Recipes)</h3>
-                </div>
-                <span class="view-btn">View Report</span>
-            </a>
-
         </main>
     </div>
 
 </body>
 </html>
-
