@@ -1,0 +1,103 @@
+---
+title: "W02-Reflection Essay-Introduction to Positron"
+author: "Luis Berimen"
+date: '`r format(Sys.time())`'
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    toc-expand: 2
+    number-sections: true
+    code-link: true
+    embed-resources: true
+    theme: cosmo
+    code-fold: true
+    code-tools: true
+    code-overflow: wrap
+editor: visual
+output-file: index.html
+execute:
+  freeze: auto
+---
+
+# Reflection on W06—Introduction to Positron {#sec-intro}
+
+::: {.callout-note title="Purpose of this report"}
+This reflection summarizes what I learned in the Week 06 module about Positron, how it compares with RStudio, and how AI tools can support my coding workflow. I organized the assignment prompts and my responses directly below each prompt so the report is easy to grade and review.
+:::
+
+## Essay prompts and responses {#sec-essay}
+
+### Positron compared with RStudio
+
+> **Prompt:** Download and install Positron. As you watch the videos in Step 1 and Step 3, follow the activities in the video and become familiar with Positron. Based on what you learned from Step 1 and Step 3, what do you like about Positron compared with RStudio?
+
+**Response:** What I like about Positron compared with RStudio is that Positron feels like a modern development environment while still supporting the type of work I normally associate with RStudio. RStudio is very strong for R programming, Quarto, and data analysis, but Positron feels broader because it is built to support data science workflows across languages and tools. I especially like that Positron has a clean interface and a project-based workflow. The editor, console, file browser, and preview areas make it easier to move between writing, coding, and checking output. I also like that Positron feels closer to tools such as Visual Studio Code while still being focused on data work. This makes it feel useful not only for R but also for Python, Quarto, GitHub, and AI-supported coding. Another benefit is that Positron encourages good habits. By working inside a project folder, I can keep my work organized and reproducible. That is important because data science work usually involves multiple files, outputs, and revisions. Positron makes that workflow feel more natural.
+
+::: {.callout-important title="Main takeaway"}
+Positron feels like a bridge between RStudio and a modern multi-language coding environment. I still get the benefits of R and Quarto, but I also get a workspace that feels ready for broader data science projects.
+:::
+
+### AI inside Positron {#sec-ai}
+
+> **Prompt:** In Step 4, the video demonstrates how you can use AI. Describe the various ways you can use AI inside Positron. Some are free while others are not.
+
+**Response:** AI can be used inside Positron in several ways. One major use is code completion, where an AI tool suggests code while I type. This can speed up common tasks, such as writing functions, creating data visualizations, or fixing syntax mistakes. Another use is asking AI to explain code. This is helpful when I am learning a new package or trying to understand an error message. AI can also help generate drafts of code, write comments, summarize a script, suggest improvements, and explain why something is not working. Some AI tools can work directly in the editor, while others may require an extension, account, subscription, or API key. Free options may be available through education programs or limited plans, while paid options may provide more advanced models or higher usage limits.[^1]
+
+[^1]: AI tools should support learning, not replace it. I still need to read the code, test it, and understand what it is doing.
+
+### AI tools installed or set up
+
+> **Prompt:** Which AI tools have you installed or set up? Which AI tools did you find beneficial for you?
+
+**Response:** For this assignment, I explored setting up GitHub Copilot because it was strongly recommended and was free since I am a student and was accepted into the GitHub Education program. I also looked at how AI assistance can be used for code suggestions, explanations, and debugging support inside a coding environment. The most beneficial AI tool for me is GitHub Copilot because it can provide suggestions directly while I am coding. This is useful when I know what I want to do but do not remember the exact syntax. For example, it can help start a Quarto code chunk, suggest R or Python code, or remind me of common patterns. However, I learned that I should treat AI suggestions as drafts, not final answers. I still need to test the code and make sure it matches the assignment.
+
+::: panel-tabset
+#### Helpful uses
+
+- Code completion while typing
+- Explaining unfamiliar code or error messages
+- Suggesting R, Python, or Quarto syntax
+- Helping organize or comment code
+
+#### Things to watch for
+
+- Suggestions can be longer than necessary
+- AI can produce incorrect code
+- A suggestion may not match the assignment directions
+- I still need to understand and test anything I use
+:::
+
+### GitHub Copilot education account and screenshot
+
+> **Prompt:** I strongly recommend using GitHub Copilot, which is free if you apply for an education account. Apply for it and take a screenshot showing you were accepted into the education program.
+
+**Response:** I applied for the GitHub Education program so I could use GitHub Copilot as a student. After being accepted, I took a screenshot of the acceptance page and saved it with my project files. Figure @fig-githubedu shows my GitHub Education acceptance.
+
+![Screenshot showing my acceptance into the GitHub Education program.](GitHub-Education.jpg){#fig-githubedu width="80%"}
+
+### Copilot: helpful or distracting?
+
+> **Prompt:** Play with it and do you find it helpful or distracting? Please elaborate.
+
+**Response:** I found GitHub Copilot helpful overall, especially when I used it as a learning assistant instead of letting it take over the assignment. It was helpful for generating starter code, reminding me of syntax, and suggesting how to structure code chunks. It also helped when I was stuck because it could suggest a possible next step.
+
+At the same time, Copilot can become distracting if I accept suggestions too quickly. Sometimes the suggestion may be longer than needed, not match the assignment, or use code I do not fully understand. Because of that, I need to slow down and review each suggestion carefully. I think Copilot is most useful when I already have a plan and use it to speed up small parts of the work. It is less useful if I use it to avoid thinking.
+
+My conclusion is that Copilot is helpful when used responsibly. It can support learning, but it should not replace practice, testing, or reflection.
+
+### GitHub Pages publication {#sec-github-pages}
+
+> **Prompt:** Publish this report to GitHub Pages. Note that although both GitHub Pages and the GitHub repository are online, they are different. GitHub Pages is a website publishing service that hosts the rendered HTML from a QMD file. Add an Appendix section at the bottom of the report and provide a URL to the GitHub Pages and GitHub Repo.
+
+**Response:** I published the rendered HTML report to GitHub Pages so the finished report can be viewed as a webpage. I also included links to both the GitHub Pages site and the GitHub repository in the Appendix below, as required.
+
+# Appendix {#sec-appendix}
+
+## GitHub Pages
+
+**GitHub Pages URL:** <https://brahhmen55.github.io/school/>
+
+## GitHub Repository
+
+**GitHub Repository URL:** <https://github.com/Brahhmen55/Introduction-to-Positron>
