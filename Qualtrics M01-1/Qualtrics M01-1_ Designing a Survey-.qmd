@@ -1,5 +1,5 @@
 ---
-title: "Qualtrics M01-1: Designing a Survey-"
+title: "Qualtrics M01-1: Designing a Survey"
 author: "Luis Berumen"
 format:
   html:
@@ -28,8 +28,8 @@ output-file: index.html
 
 ## GitHub Pages
 
-**GitHub Pages URL:** <https://brahhmen55.github.io/school/>
+**GitHub Pages URL:** <https://brahhmen55.github.io/IBM6500-/Qualtrics%20M01-1/>
 
 ## GitHub Repository
 
-**GitHub Repository URL:** <https://github.com/Brahhmen55/Qualtrics-M01-1>
+**GitHub Repository URL:** <https://github.com/Brahhmen55/IBM6500->
