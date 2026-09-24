@@ -1,0 +1,35 @@
+---
+title: "Qualtrics M01-1: Designing a Survey-"
+author: "Luis Berumen"
+format:
+  html:
+    embed-resources: true
+editor: visual
+output-file: index.html
+---
+
+## Proof of sharing with Professor Jae Jung
+
+![](qualtrics_report_images/sharing.png)
+
+## Beginning of survey
+
+![](qualtrics_report_images/beginning.png)
+
+## Middle of survey
+
+![](qualtrics_report_images/middle.png)
+
+## End of survey
+
+![](qualtrics_report_images/end.png)
+
+# Appendix {#sec-appendix}
+
+## GitHub Pages
+
+**GitHub Pages URL:** <https://brahhmen55.github.io/school/>
+
+## GitHub Repository
+
+**GitHub Repository URL:** <https://github.com/Brahhmen55/Qualtrics-M01-1>
