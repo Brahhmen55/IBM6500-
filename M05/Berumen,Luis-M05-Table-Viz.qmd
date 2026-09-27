@@ -230,4 +230,4 @@ For my own CEP work, I could use the same approach with the variables that are m
 # Appendix
 
 - **GitHub Repository:** <https://github.com/Brahhmen55/IBM6500->
-- **Published GitHub Pages Report:** \[https://brahhmen55.github.io/IBM6500-/M05/)
+- **Published GitHub Pages Report:** <https://brahhmen55.github.io/IBM6500-/M05/>
