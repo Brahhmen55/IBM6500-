@@ -1,0 +1,233 @@
+---
+title: "M05-Visualizing Data with Tables for MSDM CEP"
+author: "Luis Berumen"
+date: "`r format(Sys.time())`"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-expand: true
+    number-sections: true
+    code-link: true
+    embed-resources: true
+    theme: cosmo
+    code-overflow: wrap
+    code-tools: true
+editor: visual
+output-file: index.html
+execute:
+  freeze: auto
+  warning: false
+  message: false
+---
+
+# Introduction
+
+This assignment focuses on using tables as a form of data visualization instead of treating them as only a place to display numbers. My MSDM CEP is the **CVRx CRM Adoption Project**, where my individual analytical objective is to measure meaningful Salesforce adoption. I plan to develop a proposed **Salesforce Adoption Index** that can eventually examine differences across approved roles, territories, and time periods. The index may include opportunity update timeliness, record completeness, documentation of customer interactions, workflow consistency, and a smaller measure of platform activity. The final measures and weights will depend on the Salesforce data and workflow requirements that CVRx approves.
+
+Because I do not have the approved CVRx Salesforce dataset yet, I use the `pizzaplace` dataset included with the `gt` package for the coding portion of this assignment. This allows me to practice building a professional table now while thinking about how the same techniques can later be applied to my CEP.
+
+# Essay Reflections {#sec-reflection}
+
+## Summarize what you learned from the videos you watched.
+
+From the videos, I learned that the **gt** package gives you a lot of control over how a table looks and how the information is presented. Before going through these materials, I mostly thought of tables as a simple way to show rows and columns. The videos showed that a table can be treated more like a visualization. You can add a title and subtitle, rename columns, organize columns under spanners, change alignment and widths, add footnotes and source notes, format numbers, add borders, change fonts, and use color to draw attention to important values.
+
+Another thing I learned is that the data usually needs to be prepared before it is sent into `gt()`. Functions from **dplyr**, such as `group_by()`, `summarise()`, and `mutate()`, make it possible to organize the data around the question being answered. This stood out to me because making a good table is not only about making it look better. The data has to be summarized correctly first or the formatting does not really matter.
+
+The videos also showed how **gtExtras** can extend a normal table by putting small visualizations directly inside cells. This makes it possible to combine exact numbers with visual patterns in the same place. Instead of making the reader move back and forth between a chart and a table, the table can provide both.
+
+## What did you like about the *gt* and *gtExtras* packages demonstrated in the videos?
+
+What I liked most about **gt** is how customizable it is. There are a lot of different functions, but each one controls a specific part of the table. For example, `tab_header()` makes the purpose of the table clear, `cols_label()` makes variable names easier for a normal reader to understand, and `tab_source_note()` makes it possible to explain where the data came from. I also liked `data_color()` because color can make a large group of numbers easier to understand without removing the exact values.
+
+The feature I liked most from **gtExtras** was the ability to add small charts inside a table. A sparkline gives the reader a quick view of a pattern while still keeping the detailed statistics next to it. I think this is useful for business analytics because a manager may want the exact number but also wants to quickly identify which category is performing differently.
+
+## How do tables complement charts for data visualization?
+
+Tables and charts are useful for different reasons. Charts are usually better when the goal is to see a pattern quickly. A bar chart, line chart, or scatterplot can make differences and trends stand out immediately. The disadvantage is that it can be difficult to get an exact number from a chart.
+
+Tables complement charts because they provide the exact values. A well-designed table can also organize several measures in the same place. For example, a chart may show that one category has more sales than another, but a table can show the number of orders, average order value, total revenue, and other statistics at the same time.
+
+With **gtExtras**, the difference between a chart and a table becomes smaller because a table can contain small visualizations. This gives the reader both the precision of a table and some of the visual benefits of a chart.
+
+## Under what circumstances would you prefer to use tables rather than charts to visualize data?
+
+I would prefer a table when the exact values are important, when there are several measures that need to be compared at the same time, or when the reader may need to look up a specific value. Tables also work well when there are only a few categories and the goal is to compare detailed statistics instead of showing one overall trend.
+
+For a business presentation, I would use a table when the audience needs enough detail to make a decision. For example, if I were comparing marketing channels, I would want to see the exact conversion rate, cost, revenue, and other measures instead of only seeing which bar is larger. I would still use charts when the main goal is to communicate a trend quickly, so I see tables and charts as tools that work together rather than replacements for each other.
+
+# Data Visualization with a Table {#sec-table}
+
+My MSDM CEP focuses on Salesforce adoption at CVRx. My analytical objective is to develop a Salesforce Adoption Index and use it to understand where meaningful CRM use is consistent and where records may be late or incomplete. The proposed index would combine several measures rather than relying only on logins or time spent in Salesforce.
+
+At this point, I do not have the approved CVRx Salesforce data needed to calculate the index. For that reason, I am using the assignment-approved `pizzaplace` dataset to demonstrate the table techniques. I summarized pizza categories using total pizzas sold, average price, total revenue, revenue share, and a small weekly sales trend. Although the subject is different from my CEP, the structure is useful practice because my future CVRx table could summarize adoption measures by role, territory, or time period in a similar way.
+
+::: callout-tip
+## Connection to my CEP
+
+Once CVRx provides the approved data, a similar table could replace pizza categories with approved user groups and replace the sales measures with components of the Salesforce Adoption Index, such as update timeliness, record completeness, customer-interaction documentation, and workflow consistency.
+:::
+
+```{r}
+#| label: setup
+#| include: false
+
+library(gt)
+library(gtExtras)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(scales)
+
+data("pizzaplace", package = "gt")
+```
+
+```{r}
+#| label: prepare-data
+#| echo: true
+
+pizza_summary <- pizzaplace |>
+  mutate(
+    date = as.Date(date),
+    weekday = factor(
+      weekdays(date),
+      levels = c(
+        "Monday", "Tuesday", "Wednesday",
+        "Thursday", "Friday", "Saturday", "Sunday"
+      )
+    )
+  ) |>
+  group_by(type) |>
+  summarise(
+    pizzas_sold = n(),
+    avg_price = mean(price, na.rm = TRUE),
+    total_revenue = sum(price, na.rm = TRUE),
+    weekly_sales = list(
+      tibble(day = weekday) |>
+        count(day, .drop = FALSE) |>
+        arrange(day) |>
+        pull(n)
+    ),
+    .groups = "drop"
+  ) |>
+  arrange(desc(total_revenue)) |>
+  mutate(
+    revenue_share = total_revenue / sum(total_revenue)
+  )
+```
+
+### Table 1: Pizza category performance
+
+```{r}
+#| label: tbl-pizza-performance
+#| echo: false
+
+pizza_summary |>
+  gt(rowname_col = "type") |>
+  tab_header(
+    title = md("**Pizza Category Sales Performance**"),
+    subtitle = "Sales volume, pricing, revenue, and weekly sales patterns"
+  ) |>
+  tab_stubhead(label = "Pizza Category") |>
+  tab_spanner(
+    label = "Sales Performance",
+    columns = c(pizzas_sold, avg_price, total_revenue, revenue_share)
+  ) |>
+  cols_label(
+    pizzas_sold = "Pizzas Sold",
+    avg_price = "Average Price",
+    total_revenue = "Total Revenue",
+    revenue_share = "Revenue Share",
+    weekly_sales = "Weekly Sales Pattern"
+  ) |>
+  fmt_number(
+    columns = pizzas_sold,
+    decimals = 0,
+    use_seps = TRUE
+  ) |>
+  fmt_currency(
+    columns = c(avg_price, total_revenue),
+    currency = "USD",
+    decimals = 2
+  ) |>
+  fmt_percent(
+    columns = revenue_share,
+    decimals = 2
+  ) |>
+  gt_plt_sparkline(
+    column = weekly_sales,
+    type = "default",
+    fig_dim = c(30, 100)
+  ) |>
+  data_color(
+    columns = total_revenue,
+    palette = "Blues"
+  ) |>
+  cols_align(
+    align = "center",
+    columns = c(pizzas_sold, avg_price, total_revenue, revenue_share, weekly_sales)
+  ) |>
+  cols_width(
+    stub() ~ px(150),
+    pizzas_sold ~ px(110),
+    avg_price ~ px(115),
+    total_revenue ~ px(130),
+    revenue_share ~ px(120),
+    weekly_sales ~ px(180)
+  ) |>
+  tab_footnote(
+    footnote = "Revenue share represents each category's percentage of total revenue in the dataset.",
+    locations = cells_column_labels(columns = revenue_share)
+  ) |>
+  tab_footnote(
+    footnote = "The sparkline shows the relative number of pizzas sold from Monday through Sunday.",
+    locations = cells_column_labels(columns = weekly_sales)
+  ) |>
+  tab_source_note(
+    source_note = md("**Source:** `pizzaplace` dataset included in the **gt** R package.")
+  ) |>
+  tab_options(
+    table.font.size = px(14),
+    heading.align = "left",
+    table.width = pct(100),
+    column_labels.font.weight = "bold",
+    row_group.font.weight = "bold"
+  ) |>
+  opt_row_striping() |>
+  opt_table_font(
+    font = list(
+      google_font(name = "Roboto"),
+      default_fonts()
+    )
+  )
+```
+
+As shown in @tbl-pizza-performance, the table allows the categories to be compared on several measures without separating the information into multiple charts. The revenue color scale makes the larger revenue values stand out, while the sparkline adds another layer of information by showing the weekly sales pattern. At the same time, the exact numbers are still available for anyone who wants more detail.
+
+::: panel-tabset
+## What the numbers show
+
+The table provides a direct comparison of category performance. Pizzas sold shows volume, average price helps explain differences in the value of each sale, and total revenue combines those two ideas into a measure that is easier to connect to business performance.
+
+## What the sparkline adds
+
+The weekly sparkline gives the reader a quick way to compare the shape of sales across the seven days of the week. This is information that would be difficult to communicate with only one summary number.
+
+## Design choices
+
+I used reader-friendly labels instead of the original variable names, currency and percentage formatting, a spanner to group the main performance measures, footnotes to explain calculations, a source note, row striping, and color to make the table easier to read.
+:::
+
+## Explain why the table is worth adding to your MSDM project written report or presentation slides.
+
+A table like this is worth adding to an MSDM project because it summarizes several important measures in one place and makes them easier to compare. In a presentation, I would not want to show the audience raw data or make them interpret variable names that only make sense to the person who created the analysis. The table changes those variables into labels and formats that a business audience can understand.
+
+The combination of numbers and a small chart is also useful because different people look for different things. Someone may want to know the exact revenue, while someone else may first notice the visual pattern. This table gives both types of readers useful information.
+
+For my own CEP work, I could use the same approach with the variables that are most important to the project. For example, if the project involves website or marketing performance, a table could compare channels, competitors, campaigns, or other groups using the most relevant KPIs. That would make the analysis easier to present and connect the data back to the business problem.
+
+# Appendix
+
+- **GitHub Repository:** <https://github.com/Brahhmen55/IBM6500->
+- **Published GitHub Pages Report:** \[https://brahhmen55.github.io/IBM6500-/M05/)
