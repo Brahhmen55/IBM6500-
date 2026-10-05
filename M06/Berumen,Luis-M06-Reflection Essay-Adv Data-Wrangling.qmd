@@ -1,0 +1,368 @@
+---
+title: "M06 Reflection Essay: Advanced Data Wrangling"
+author: "Luis Berumen"
+date: today
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 4
+    toc-expand: 2
+    number-sections: true
+    code-link: true
+    code-fold: show
+    code-tools: true
+    code-overflow: wrap
+    embed-resources: true
+    smooth-scroll: true
+output-file: index.html
+editor: visual
+execute:
+  echo: true
+  warning: false
+  message: false
+  freeze: auto
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+required_packages <- c("dplyr", "tibble", "knitr")
+
+missing_packages <- required_packages[
+  !vapply(required_packages, requireNamespace, logical(1), quietly = TRUE)
+]
+
+if (length(missing_packages) > 0) {
+  stop(
+    paste0(
+      "Install the following packages before rendering: ",
+      paste(missing_packages, collapse = ", "),
+      ". Run install.packages(c(",
+      paste(sprintf('"%s"', missing_packages), collapse = ", "),
+      ")) in the R Console."
+    )
+  )
+}
+
+library(dplyr)
+library(tibble)
+library(knitr)
+```
+
+# Reveal.js Impressions
+
+## Prompt 1
+
+*In Step 1, you learned how to design stunning presentation slides with Quarto. What's your impression of the Revealjs presentation? Describe its capabilities as you learned from the presentations. What are its strengths and weaknesses compared with PPT?*
+
+## Response
+
+My overall impression of Reveal.js is that it is a powerful presentation system for people who work with data, code, and research. It creates slides as web-based HTML files, but the slides still behave like a traditional presentation. A presenter can move through slides with the keyboard, open speaker view, display notes on a second screen, use slide numbers, and organize the deck with a table of contents.
+
+Reveal.js also supports features that make a presentation more engaging. These include incremental bullet points, manual pauses, fragments, fade effects, highlighted text, background colors, transitions, columns, callouts, footnotes, logos, and custom themes. Because the presentation is written in Quarto, R code can be placed directly in the document. The code can read data, calculate statistics, and generate charts or tables while the presentation is rendered.
+
+### Strengths compared with PowerPoint
+
+Reveal.js has several strengths for analytics and research presentations:
+
+1.  **Reproducible analysis.** Code, data, charts, and explanations can be stored in the same file.
+2.  **Automatic updating.** When the data or code changes, the presentation can be rendered again.
+3.  **Consistency.** YAML settings and CSS can apply a common style across the entire slide deck.
+4.  **Version control.** A `.qmd` file is text based, so it works well with Git and GitHub.
+5.  **Web publishing.** The presentation can be shared through a link and viewed in a browser.
+6.  **Literate programming.** The presentation documents both the analytical process and the findings.
+
+### Weaknesses compared with PowerPoint
+
+Reveal.js also has limitations. It requires knowledge of Markdown, YAML, code chunks, file paths, and sometimes CSS. Rendering can also fail when a project depends on a file that is missing or stored in the wrong location. PowerPoint is easier for quickly moving objects, changing layouts visually, and creating slides without code.
+
+PowerPoint is also more familiar to many audiences and organizations. A user can drag images, resize text boxes, and adjust visual elements immediately. In Reveal.js, design changes may require editing code and rendering the file again.
+
+The comparison can be summarized in @tbl-comparison.
+
+```{r}
+#| label: tbl-comparison
+#| tbl-cap: "Comparison of Reveal.js and PowerPoint"
+
+comparison <- tibble(
+  Feature = c(
+    "Reproducible code and output",
+    "Ease of visual editing",
+    "Web publishing",
+    "Version control",
+    "Learning curve",
+    "Data-driven charts and tables"
+  ),
+  `Reveal.js` = c(
+    "Excellent",
+    "Moderate",
+    "Excellent",
+    "Excellent",
+    "Higher",
+    "Excellent"
+  ),
+  PowerPoint = c(
+    "Limited",
+    "Excellent",
+    "Moderate",
+    "Limited",
+    "Lower",
+    "Manual or externally linked"
+  )
+)
+
+kable(comparison)
+```
+
+# My Reveal.js Presentation
+
+## Prompt 2
+
+*In Step 2, you were asked to create a Revealjs presentation. Provide a link to the presentation you published on the web. Add at least one reproducible chart or table in the presentation. Briefly describe what the presentation is about. What did you learn from the experience of the Revealjs presentation?*
+
+## Published Presentation
+
+::: callout-important
+## Publication Link
+
+**Presentation link:** **\[ADD YOUR PUBLISHED CVRx REVEAL.JS URL HERE AFTER PUBLISHING\]**
+
+The corrected CVRx proposal presentation has been prepared locally. This placeholder should be replaced with the public Quarto Pub or other web-publishing URL before submitting the reflection.
+:::
+
+## Presentation Overview
+
+My Reveal.js presentation is **CVRx CRM Adoption Project: Proposal Presentation**. It is based on my group's MSDM Culminating Experience Project and focuses on my individual analytics objective, **AO1 — Measure Meaningful Salesforce Adoption**.
+
+The broader CEP is designed to help CVRx understand and improve meaningful Salesforce adoption. My part of the project proposes developing a **Salesforce Adoption Index** that can eventually be used to examine adoption across client-approved roles, territories, and time periods. Rather than defining adoption only by logins or general platform activity, the proposed index considers several dimensions of meaningful CRM use, including opportunity-update timeliness, record completeness, documentation of customer interactions, workflow consistency, and a smaller platform-activity component.
+
+An important part of the presentation is that the project is still in progress. CVRx has not yet provided the approved client dataset, so I did not create fictional sample sizes, findings, or statistical results. The Methods slides identify the unfinished portions as **Pending Client Data**, **In Progress**, or **To Be Finalized After Data Access**. This makes the proposal transparent about what is already established and what still depends on the client's data, workflow definitions, and privacy requirements.
+
+### Reproducible Evidence
+
+The assignment asks for at least one reproducible chart or table. Because client observations are not yet available, I used R to reproducibly generate a **proposed-measures table** instead of inventing empirical data. The table documents the five planned components of the Salesforce Adoption Index and explains the purpose of each component.
+
+This approach taught me that reproducibility does not require pretending a project is farther along than it actually is. At the proposal stage, code can still document the analytical design. Once CVRx provides approved data, the same Quarto project can be expanded to import the data, calculate measures, and generate empirical tables and figures.
+
+::: callout-tip
+## Why this approach fits the project stage
+
+The reproducible table represents the **planned measurement framework**, not client results. Sample characteristics and final statistical methods will be updated only after the approved CVRx dataset is available.
+:::
+
+## What I Learned
+
+Creating this presentation helped me understand that Reveal.js works especially well for an analytics proposal because the presentation, analytical plan, citations, R code, and visual design can all exist in one reproducible project. I used features such as a table of contents, incremental lists, manual pauses, fragments, columns, speaker notes, callouts, footnotes, slide transitions, a footer, references, custom CSS, and clickable Appendix navigation.
+
+I also learned that project organization is important. The `.qmd`, CSS stylesheet, and bibliography must be in the correct project location and referenced with valid relative paths. For example, when the bibliography file was not in the project folder, Quarto could not render the presentation. Correcting the project structure showed me that reproducibility includes file organization as well as R code.
+
+Another lesson was the value of **honest analytical communication**. Because the CVRx data have not been received, I had to separate what the project currently knows from what is still being developed. Instead of presenting hypothetical statistics as results, the slides clearly identify unfinished data-dependent sections. I think this makes the presentation more credible because the audience can distinguish the proposed methodology from actual findings.
+
+Finally, I learned that presentation design should support the story rather than distract from it. I customized the slides with a Cal Poly Pomona-inspired green-and-gold design while keeping the analytical objective and project status easy to follow. Reveal.js requires more setup than PowerPoint, but once the structure is working, it creates a strong connection between the presentation and the analytical workflow.[^1]
+
+[^1]: The presentation will continue to develop as the CEP progresses and approved CVRx data become available.
+
+# Advanced Data Wrangling
+
+## Prompt 3
+
+*My advanced wrangling lecture in Step 3 introduced new concepts, including how to join relational databases. Pick three different functions, each from a different category. Describe when to use them and give one coding example along with an output for each function. To clarify, you are expected to do literate programming to weave your narratives with the code.*
+
+The three functions selected for this reflection are:
+
+- `left_join()` from relational data and mutating joins
+- `across()` from column-wise/multi-column operations
+- `case_when()` from conditional recoding
+
+These choices reflect three different categories from the advanced-wrangling material. The lecture emphasized that joins connect relational tables through keys, that `across()` avoids repetitive code when the same operation is needed for several columns, and that `case_when()` is useful for building a new variable from ordered logical conditions.
+
+::: panel-tabset
+### Join
+
+`left_join()` combines related tables while preserving the observations in the left table.
+
+### Columns
+
+`across()` applies a common operation to a selected set of columns.
+
+### Conditions
+
+`case_when()` converts multiple logical rules into a new variable.
+:::
+
+# `left_join()`
+
+## Category and purpose
+
+`left_join()` belongs to the category of **relational data and mutating joins**. It is used when information is stored in two tables and the analyst wants to add matching columns from the second table to the first table.
+
+A left join preserves every row from the table on the left. When no matching key exists in the right table, the new fields contain `NA`. This behavior is useful when the first table represents the main population that should not lose any records. The lecture presented `left_join()` as the practical default when the analyst wants to look up additional information without dropping unmatched observations. It also stressed the importance of understanding primary and foreign keys before joining tables.
+
+For example, one table may contain credit-union members and another may contain current loans. The shared key is `member_id`.
+
+```{r}
+#| label: tbl-left-join-input
+#| tbl-cap: "Member and loan tables before the join"
+
+members <- tibble(
+  member_id = c(101, 102, 103, 104),
+  member_name = c("Ana", "Ben", "Carlos", "Diana")
+)
+
+loans <- tibble(
+  member_id = c(101, 103, 104),
+  loan_balance = c(5000, 8200, 3000)
+)
+
+members
+loans
+```
+
+The following code joins the loan information to the member table.
+
+```{r}
+#| label: tbl-left-join-output
+#| tbl-cap: "Output produced by left_join()"
+
+member_loans <- members |>
+  left_join(loans, by = "member_id")
+
+kable(member_loans)
+```
+
+The output retains all four members. Ben remains in the data even though no matching loan record exists, so his `loan_balance` is displayed as `NA`. This is preferable to an inner join when the goal is to preserve all members.
+
+::: callout-important
+## Key consideration
+
+Before joining, the analyst should verify that the key has the correct type in both tables and determine whether duplicate keys are expected. Duplicate keys can unexpectedly increase the number of rows.
+:::
+
+# `across()`
+
+## Category and purpose
+
+`across()` belongs to the category of **applying an operation to multiple columns**. It is commonly used inside `mutate()` or `summarise()`.
+
+Without `across()`, an analyst might repeat the same function separately for many survey variables. With `across()`, the function is written once and applied to a selected group of columns. This matches the lecture's explanation that copying and pasting the same calculation across many columns is tedious and error-prone, while `across()` lets the analyst specify the columns and function in one place.
+
+The following example contains three employee-rating items measured on a five-point scale.
+
+```{r}
+#| label: tbl-across-input
+#| tbl-cap: "Employee-rating items"
+
+ratings <- tibble(
+  respondent = 1:5,
+  q3 = c(4, 5, 3, 4, 5),
+  q4 = c(5, 4, 4, 4, 5),
+  q5 = c(4, 5, 3, 5, 4)
+)
+
+kable(ratings)
+```
+
+The next code calculates both the mean and standard deviation for all three rating columns.
+
+```{r}
+#| label: tbl-across-output
+#| tbl-cap: "Summary statistics generated with across()"
+
+rating_summary <- ratings |>
+  summarise(
+    across(
+      q3:q5,
+      list(
+        mean = ~ mean(.x, na.rm = TRUE),
+        sd = ~ sd(.x, na.rm = TRUE)
+      ),
+      .names = "{.col}_{.fn}"
+    )
+  )
+
+kable(rating_summary, digits = 2)
+```
+
+This produces six summary columns without repeating the calculation for each variable. The `.names` argument creates clear names such as `q3_mean` and `q3_sd`.
+
+`across()` is especially useful with large survey datasets because many items often require the same recoding, cleaning, or summary operation.
+
+# `case_when()`
+
+## Category and purpose
+
+`case_when()` belongs to the category of **conditional transformation and recoding**. It is useful when a new variable depends on several logical conditions.
+
+Unlike a simple two-category `if_else()`, `case_when()` can evaluate multiple conditions in order. The final `TRUE` condition acts as a default category. A major lesson from the lecture was that **order matters**: more specific rules should be placed before broader rules so that observations are not classified too early.
+
+The following example classifies credit-union members by loan balance.
+
+```{r}
+#| label: tbl-case-when-input
+#| tbl-cap: "Member loan balances before recoding"
+
+balances <- tibble(
+  member = c("A", "B", "C", "D", "E"),
+  loan_balance = c(200, 1500, 4800, 6000, 12000)
+)
+
+kable(balances)
+```
+
+The next code creates a categorical variable called `balance_group`.
+
+```{r}
+#| label: tbl-case-when-output
+#| tbl-cap: "Loan-balance categories produced with case_when()"
+
+balance_groups <- balances |>
+  mutate(
+    balance_group = case_when(
+      loan_balance < 1000 ~ "Low",
+      loan_balance < 5000 ~ "Moderate",
+      TRUE ~ "High"
+    )
+  )
+
+kable(balance_groups)
+```
+
+The conditions are evaluated from top to bottom. A balance below 1,000 is classified as low. A remaining balance below 5,000 is moderate. All remaining values are classified as high.
+
+::: callout-caution
+## Order matters
+
+The conditions in `case_when()` must be arranged carefully. If a broad condition is listed before a narrower condition, the broad condition may classify a value before the narrower rule is reached.
+:::
+
+# Function Comparison
+
+The three functions solve different data-wrangling problems, as shown in @tbl-functions.
+
+```{r}
+#| label: tbl-functions
+#| tbl-cap: "Summary of the three advanced wrangling functions"
+
+function_summary <- tibble(
+  Function = c("left_join()", "across()", "case_when()"),
+  Category = c(
+    "Relational data and joins",
+    "Multi-column operations",
+    "Conditional recoding"
+  ),
+  Best_use = c(
+    "Adding matching information from another table while preserving all rows in the first table",
+    "Applying the same calculation or transformation to several columns",
+    "Creating a variable from multiple logical conditions"
+  ),
+  Main_risk = c(
+    "Incorrect or duplicate keys",
+    "Selecting unintended columns",
+    "Placing conditions in the wrong order"
+  )
+)
+
+kable(function_summary)
+```

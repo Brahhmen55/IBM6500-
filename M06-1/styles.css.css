@@ -1,0 +1,157 @@
+/* Cal Poly Pomona-inspired Reveal.js styling
+   Official CPP primary colors:
+   CPP Green #005030 | CPP Gold #FFB81C
+   Secondary light background: Eggshell #F2EEE8
+*/
+
+:root {
+  --cpp-green: #005030;
+  --cpp-gold: #FFB81C;
+  --cpp-eggshell: #F2EEE8;
+  --cpp-black: #121212;
+  --cpp-white: #FFFFFF;
+}
+
+.reveal {
+  font-family: "Aptos", "Helvetica Neue", Arial, sans-serif;
+  color: var(--cpp-black);
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3 {
+  letter-spacing: -0.02em;
+  font-weight: 750;
+}
+
+.reveal h1 {
+  color: var(--cpp-white);
+}
+
+.reveal h2 {
+  color: var(--cpp-green);
+  border-bottom: 7px solid var(--cpp-gold);
+  padding-bottom: 0.14em;
+}
+
+.reveal h3 {
+  color: var(--cpp-green);
+}
+
+.reveal section.title-slide h1,
+.reveal section.title-slide h2,
+.reveal section.title-slide p,
+.reveal section.title-slide .subtitle,
+.reveal section.title-slide .author,
+.reveal section.title-slide .date {
+  color: var(--cpp-white);
+}
+
+.reveal .footer {
+  color: var(--cpp-green);
+  font-weight: 700;
+  border-top: 2px solid var(--cpp-gold);
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.reveal .slide-number {
+  color: var(--cpp-green);
+  background: var(--cpp-eggshell);
+  border: 1px solid var(--cpp-gold);
+  border-radius: 5px;
+  padding: 3px 7px;
+}
+
+.reveal .callout-note,
+.reveal .callout-tip {
+  border-left: 10px solid var(--cpp-green);
+  border-radius: 12px;
+  background: var(--cpp-eggshell);
+}
+
+.reveal .callout-warning {
+  border-left: 10px solid var(--cpp-gold);
+  border-radius: 12px;
+  background: #fff8e6;
+}
+
+.reveal .callout-title {
+  color: var(--cpp-green);
+  font-weight: 750;
+}
+
+.reveal .large-callout {
+  font-size: 1.02em;
+}
+
+.reveal .highlight-red {
+  color: var(--cpp-green);
+  font-weight: 800;
+  border-left: 8px solid var(--cpp-gold);
+  padding-left: 0.45em;
+}
+
+.reveal blockquote {
+  border-left: 8px solid var(--cpp-gold);
+  background: var(--cpp-eggshell);
+  padding: 0.5em 0.8em;
+  box-shadow: none;
+}
+
+.reveal table {
+  font-size: 0.70em;
+  border-collapse: collapse;
+}
+
+.reveal table thead {
+  background: var(--cpp-green);
+  color: var(--cpp-white);
+}
+
+.reveal table th {
+  color: var(--cpp-white);
+}
+
+.reveal table tbody tr:nth-child(even) {
+  background: var(--cpp-eggshell);
+}
+
+.reveal a {
+  color: var(--cpp-green);
+  text-decoration-color: var(--cpp-gold);
+  text-decoration-thickness: 2px;
+}
+
+.reveal pre code {
+  max-height: 520px;
+}
+
+.reveal .slide-logo {
+  max-height: 72px !important;
+}
+
+.reveal strong {
+  color: var(--cpp-green);
+}
+
+.reveal section[data-background-color="#005030"] h1,
+.reveal section[data-background-color="#005030"] h2,
+.reveal section[data-background-color="#005030"] h3,
+.reveal section[data-background-color="#005030"] p,
+.reveal section[data-background-color="#005030"] li {
+  color: var(--cpp-white);
+}
+
+.reveal section[data-background-color="#005030"] h2 {
+  border-bottom-color: var(--cpp-gold);
+}
+
+.reveal section[data-background-color="#FFB81C"] h1,
+.reveal section[data-background-color="#FFB81C"] h2,
+.reveal section[data-background-color="#FFB81C"] h3 {
+  color: var(--cpp-green);
+}
+
+.reveal section[data-background-color="#FFB81C"] h2 {
+  border-bottom-color: var(--cpp-green);
+}

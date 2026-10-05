@@ -1,0 +1,369 @@
+---
+title: "CVRx CRM Adoption Project"
+subtitle: "Proposal Presentation"
+author: "Luis Berumen"
+institute: "IBM 6500, Cal Poly Pomona"
+date: "`r Sys.Date()`"
+format:
+  revealjs:
+    theme: serif
+    width: 1600
+    height: 900
+    footer: "CVRx CRM Adoption Project"
+    transition: slide
+    transition-speed: default
+    incremental: false
+    toc: true
+    toc-depth: 1
+    slide-number: true
+    scrollable: true
+    smaller: true
+    code-fold: false
+    code-overflow: wrap
+    number-sections: false
+    number-depth: 5
+    embed-resources: true
+    css: styles_CPP.css
+output-file: index.html
+editor: visual
+execute:
+  echo: true
+  freeze: auto
+bibliography: references.bib
+---
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+# No CVRx client data have been received yet.
+# This presentation therefore demonstrates the proposed analytical design
+# without creating fictional observations or empirical results.
+
+proposed_measures <- data.frame(
+  Component = c(
+    "Opportunity update timeliness",
+    "Record completeness",
+    "Customer interaction documentation",
+    "Workflow consistency",
+    "Platform activity"
+  ),
+  Purpose = c(
+    "Assess whether required opportunity information is updated within an approved time window",
+    "Assess completion of fields CVRx identifies as necessary for commercial decisions",
+    "Assess whether relevant customer interactions are documented in approved workflows",
+    "Assess consistency with role-specific Salesforce workflow expectations",
+    "Provide a limited supporting indicator of platform use rather than treating logins as adoption"
+  ),
+  Status = rep("Proposed; requires CVRx confirmation", 5)
+)
+```
+
+# Introduction {background-color="#005030"}
+
+::: {.incremental style="font-size: 1.25em; text-align: center"}
+- CVRx wants to strengthen meaningful Salesforce adoption and the reliability of CRM information used in commercial decision-making.
+- The broader CEP has four objectives: measure adoption, identify barriers and drivers, segment users, and evaluate a targeted engagement campaign.
+- This proposal focuses on **AO1: Measure Meaningful Salesforce Adoption**.
+:::
+
+::: notes
+Explain that the project is still in the proposal and data-access stage. The purpose of these slides is to present the planned analytics approach, not results that do not yet exist.
+:::
+
+## Problem Statement
+
+:::: {.fragment .fade-up}
+::: {.fragment .highlight-red}
+Salesforce activity alone does not establish meaningful adoption. Users can access a CRM while still leaving decision-relevant records incomplete, late, or inconsistent with required workflows.
+:::
+::::
+
+. . .
+
+::: {.callout-note .large-callout}
+For CVRx, the business need is to establish a defensible baseline of **meaningful use and data reliability** before designing or evaluating an engagement intervention.
+:::
+
+## Analytics Objective
+
+::::: columns
+::: {.column width="52%"}
+### AO1
+
+Develop a **Salesforce Adoption Index** and use it to examine how meaningful adoption differs across approved roles, territories, and time periods.
+:::
+
+::: {.column width="48%"}
+### Planned unit of analysis
+
+A possible unit is a **deidentified user-month**, with results reported in aggregate.
+
+The final unit depends on the Salesforce data and privacy rules approved by CVRx.
+:::
+:::::
+
+::: notes
+Emphasize that the index is proposed. CVRx still needs to confirm which fields, actions, time windows, roles, and workflows are required.
+:::
+
+## Why It Matters
+
+::: incremental
+- Timely and reliable CRM information supports opportunity management and commercial decision-making.
+- Incomplete or outdated records can reduce leadership visibility into field activity and customer needs.
+- A baseline can identify which workflow areas need attention first.
+- The same baseline can later support evaluation of the CEP engagement campaign.
+:::
+
+The project treats meaningful adoption as more than login frequency.[^1]
+
+[^1]: The proposed approach emphasizes task-relevant use and information quality. Final definitions will be established with CVRx after approved data and workflow requirements are available.
+
+# Literature Review {background-color="#005030"}
+
+## Relevant Theory and Models
+
+::::: columns
+::: {.column width="52%"}
+### Information systems perspective
+
+The **Information Systems Success Model** separates information quality, system quality, use, satisfaction, and net benefits [@delone2003]. This supports examining record quality separately from simple platform activity.
+
+**Task-Technology Fit** and task-based usage research also support matching measures to the work users are expected to perform [@goodhue1995; @burtonjones2006].
+:::
+
+::: {.column width="48%"}
+### Adoption perspective
+
+The **Technology Acceptance Model** emphasizes perceived usefulness and perceived ease of use [@davis1989]. These beliefs can help explain adoption but cannot be measured from Salesforce records alone.
+
+Therefore, behavioral CRM measures and later user feedback should complement one another.
+:::
+:::::
+
+## What the Literature Suggests
+
+::: incremental
+- Do not treat every Salesforce action as equally meaningful.
+- Measure task-relevant behaviors and information quality.
+- Compare like with like across roles and eligible work.
+- Keep component measures visible rather than relying only on one overall score.
+- Interpret adoption in the context of workflow, support, and user experience.
+:::
+
+. . .
+
+::: {.callout-tip .large-callout}
+The literature guides **how to measure** adoption, but it does not provide CVRx's baseline or determine the final scoring rules.
+:::
+
+## Data Adequacy
+
+### What we know now
+
+The CEP has a defined business objective and a research-supported measurement direction.
+
+### What is still needed
+
+::: callout-warning
+**Status: In Progress / Pending CVRx Confirmation.** These items must be resolved before the proposed Salesforce Adoption Index can be calculated.
+:::
+
+::: incremental
+- approved Salesforce fields and record histories,
+- definitions of required versus optional actions,
+- expected update time windows,
+- role-specific workflow expectations,
+- territory/time-period definitions,
+- rules for distinguishing missing data from work that was not required.
+:::
+
+::: aside
+**Current project status:** CVRx client data have **not yet been received**, so no empirical baseline, sample characteristics, or results are presented here.
+:::
+
+## Need for Additional Analysis
+
+. . .
+
+::: {.fragment .fade-up}
+After data access is approved, the first step will be to determine which records are eligible for each proposed measure.
+:::
+
+. . .
+
+::: {.fragment .fade-up}
+The analysis will then calculate component scores, evaluate the proposed index, compare approved groups and time periods, and test whether alternative scoring choices materially change the conclusions.
+:::
+
+# Methods {background-color="#005030"}
+
+::: {.callout-note .large-callout}
+## Methods Status: In Progress
+
+The methods below describe the **current proposed analytical approach**. Final sampling rules, variables, scoring definitions, and statistical procedures will be finalized after CVRx approves and provides the relevant Salesforce data and workflow requirements.
+:::
+
+## Data and Sampling
+
+::: callout-warning
+**Status: Pending Client Data.** The population, analytical sample, inclusion rules, and final time period cannot be finalized until CVRx confirms the approved Salesforce extract and privacy requirements.
+:::
+
+::::: columns
+::: {.column width="50%"}
+### Proposed population
+
+Commercial field users whose approved Salesforce workflows are relevant to the adoption measures.
+
+### Proposed data source
+
+Client-approved Salesforce records and histories, potentially supplemented later by survey or interview feedback.
+:::
+
+::: {.column width="50%"}
+### Sampling approach
+
+To be determined after CVRx confirms data access, available time periods, eligible roles, and privacy requirements.
+
+**No client sample has been received yet.**
+:::
+:::::
+
+::: notes
+Do not state a sample size. Explain that the analytical population and sample will be defined only after the client confirms access and inclusion rules.
+:::
+
+## Data Wrangling Plan
+
+::: callout-note
+**Status: Planned workflow.** These steps will be refined once the structure, field names, missing-value conventions, and history tables in the approved client data are known.
+:::
+
+::: incremental
+1.  Import only client-approved Salesforce extracts.
+2.  Remove or avoid direct identifiers when possible and use approved deidentified IDs.
+3.  Standardize dates, role/territory labels, and required-field definitions.
+4.  Define eligible records for each component so users are not penalized for work they were not expected to perform.
+5.  Create component measures at the approved analytical level, potentially user-month.
+6.  Validate missingness, duplicates, date logic, and scoring rules before constructing the index.
+:::
+
+## Proposed Adoption Measures
+
+The following table is **reproducibly generated in R from the proposed analytical design**. It is not a table of client observations.
+
+```{r}
+#| echo: false
+#| label: tbl-proposed-measures
+#| tbl-cap: "Proposed components of the Salesforce Adoption Index"
+knitr::kable(proposed_measures)
+```
+
+## Sample Characteristics
+
+::: {.callout-warning .large-callout}
+## Pending Client Data
+
+**Sample characteristics are still in progress.** CVRx has not yet provided the approved analytical dataset, so the number of users, roles, territories, observations, and available time periods cannot yet be reported.
+:::
+
+Once access is approved, this section will summarize the analytical sample using only client-approved, deidentified information. Depending on the available fields, the final slide may report:
+
+::: incremental
+- number of eligible deidentified users,
+- approved role categories,
+- approved territories or business groups,
+- number of eligible user-month observations,
+- time period covered by the extract, and
+- missingness or eligibility exclusions relevant to AO1.
+:::
+
+::: notes
+Explain that this slide is intentionally marked pending rather than filled with hypothetical sample statistics. It will be updated when the approved CVRx dataset is received.
+:::
+
+## Measures
+
+::: callout-warning
+**Status: In Progress.** The five components below are supported by the current CEP proposal, but their exact operational definitions, denominators, thresholds, and weights still require CVRx confirmation.
+:::
+
+::::: columns
+::: {.column width="50%"}
+### Proposed outcome
+
+**Salesforce Adoption Index**
+
+A composite summary of meaningful Salesforce use, reported alongside its separate components.
+:::
+
+::: {.column width="50%"}
+### Proposed components
+
+- opportunity update timeliness
+- record completeness
+- customer interaction documentation
+- workflow consistency
+- smaller platform-activity component
+:::
+:::::
+
+## Why Not Just Count Logins?
+
+> A high level of platform activity does not necessarily mean the information entered is timely, complete, or useful for a commercial decision.
+
+::: incremental
+- Activity will be treated as a supporting measure rather than the definition of adoption.
+- Required tasks will be matched to role and eligible work.
+- Component scores will remain visible so the overall index does not hide the source of a low or high score.
+:::
+
+## Analytics Methods
+
+::: callout-note
+**Status: To Be Finalized After Data Access.** The methods below are appropriate planned analyses, but the final statistical tests will depend on the number of observations, variable types, missingness, time coverage, and comparison groups available in the approved dataset.
+:::
+
+::: incremental
+- **Descriptive baseline:** summarize each component and the proposed overall index.
+- **Group comparisons:** examine approved roles and territories while comparing like with like.
+- **Time patterns:** examine adoption across approved time periods when longitudinal records are available.
+- **Sensitivity analysis:** test whether reasonable alternative weights change conclusions.
+- **Contextual interpretation:** use later survey/interview evidence, if available, to help explain patterns rather than treating behavioral records as attitudes.
+:::
+
+::: notes
+These are planned methods. Specific statistical tests will depend on the structure, quality, and amount of approved client data.
+:::
+
+# Expected Contribution {background-color="#FFB81C"}
+
+## What AO1 Should Produce
+
+::: incremental
+- A transparent baseline of meaningful Salesforce adoption.
+- Separate component scores showing where gaps occur.
+- Comparisons that account for role and eligible workload.
+- A measurement foundation for AO2's analysis of barriers and drivers.
+- A baseline that can later help evaluate the engagement campaign under AO4.
+:::
+
+## What This Presentation Does **Not** Claim
+
+::: {.callout-warning .large-callout}
+Because CVRx data have not yet been received, this proposal does **not** report:
+
+- a client sample size,
+- observed adoption scores,
+- statistical significance,
+- role or territory differences,
+- campaign effects, or
+- recommendations based on empirical CVRx results.
+:::
+
+. . .
+
+The purpose is to show a defensible plan that can be executed once approved data become available.
