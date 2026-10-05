@@ -127,9 +127,7 @@ kable(comparison)
 ::: callout-important
 ## Publication Link
 
-**Presentation link:** **\[ADD YOUR PUBLISHED CVRx REVEAL.JS URL HERE AFTER PUBLISHING\]**
-
-The corrected CVRx proposal presentation has been prepared locally. This placeholder should be replaced with the public Quarto Pub or other web-publishing URL before submitting the reflection.
+**Presentation link:** <https://brahhmen55.github.io/IBM6500-/M06-1/>
 :::
 
 ## Presentation Overview
