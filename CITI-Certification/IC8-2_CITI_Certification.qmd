@@ -1,0 +1,35 @@
+---
+title: "CITI Certification"
+author: "Luis Berumen"
+date: "`r format(Sys.time())`"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-expand: true
+    number-sections: true
+    code-link: true
+    embed-resources: true
+    theme: cosmo
+    code-overflow: wrap
+    code-tools: true
+editor: visual
+output-file: index.html
+execute:
+  freeze: auto
+  warning: false
+  message: false
+---
+
+## College of Business Administration Certificate
+
+![](images/CitiCBACert-Luis-Berumen.png){width="90%"}
+
+## Introduction to Human Subjects 101 Certificate
+
+![](images/CitiCert-Luis-Berumen.png){width="90%"}
+
+## Appendix
+
+- **GitHub Repository:** <https://github.com/Brahhmen55/IBM6500->
+- **Published GitHub Pages Report:** <https://brahhmen55.github.io/IBM6500-/CITI-Certification/>
