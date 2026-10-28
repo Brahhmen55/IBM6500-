@@ -7,36 +7,77 @@ format:
     nav-buttons: [home]
 ---
 
+
+```{r}
+#| include: false
+# Read the original course dataset. No Python is required.
+local_file <- "Case 31 Data_efcu_Prepped.sav"
+if (!file.exists(local_file)) {
+  local_file <- tempfile(fileext = ".sav")
+  download.file("https://raw.githubusercontent.com/jaejungca/case31/main/Case%2031%20Data_efcu_Prepped.sav", local_file, mode = "wb", quiet = TRUE)
+}
+case31 <- foreign::read.spss(local_file, to.data.frame = TRUE,
+                           use.value.labels = FALSE)
+service <- c("q3", "q4", "q5", "q6")
+service_means <- colMeans(case31[service], na.rm = TRUE)
+employee_mean <- mean(case31$at_emp, na.rm = TRUE)
+valid_overall <- case31$q37 %in% 1:5
+positive_pct <- 100 * sum(case31$q37 %in% 1:2) / sum(valid_overall)
+stopifnot(all(abs(rowMeans(case31[service]) - case31$at_emp) < 1e-8))
+# A shared plotting function keeps the three charts consistent.
+plot_bars <- function(values, labels, limit, axis_title, digits = 2) {
+  par(mar = c(5, 10, 1, 2), bg = "white", fg = "#17333b")
+  y <- barplot(rev(values), names.arg = rev(labels), horiz = TRUE,
+               las = 1, col = "#167d8d", border = NA,
+               xlim = c(0, limit), xlab = axis_title, cex.names = .85)
+  text(rev(values), y, labels = format(round(rev(values), digits), nsmall = digits),
+       pos = 4, cex = .9)
+}
+```
+
 ## Row
 
 ::: {.valuebox icon="people" color="primary"}
 Survey respondents
 
-128
+`r nrow(case31)`
 :::
 
 ::: {.valuebox icon="person-check" color="info"}
 Employee service / 5
 
-4.21
+`r sprintf("%.2f", employee_mean)`
 :::
 
 ::: {.valuebox icon="hand-thumbs-up" color="success"}
 Excellent or good
 
-84.3%
+`r sprintf("%.1f%%", positive_pct)`
 :::
 
 ## Row
 
 ::: {.card title="Service strengths and improvement areas"}
-![Mean employee service ratings: courtesy 4.35, helpfulness 4.31, professionalism 4.08, availability 4.08.](assets/service.svg)
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 4
+#| dev: svg
+plot_bars(service_means, c("Courtesy", "Helpfulness", "Professionalism", "Availability"), 5, "Mean agreement (1 = strongly disagree; 5 = strongly agree)")
+```
 
 Courtesy leads the four employee measures. Professionalism and availability are tied for the lowest average, although both exceed 4 out of 5. Each item has 128 valid responses.
 :::
 
 ::: {.card title="Overall credit union experience"}
-![Overall ratings: excellent 31, good 71, average 16, poor 2, very poor 1.](assets/overall.svg)
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 4
+#| dev: svg
+counts <- table(factor(case31$q37, levels = 1:5))
+plot_bars(as.numeric(counts), c("Excellent", "Good", "Average", "Poor", "Very poor"), 85, "Respondents with a valid overall rating (n = 121)", 0)
+```
 
 102 of 121 valid ratings are excellent or good (**84.3%**). Seven of the 128 records have missing overall ratings and are excluded from this percentage.
 :::
@@ -44,7 +85,14 @@ Courtesy leads the four employee measures. Professionalism and availability are 
 ## Row
 
 ::: {.card title="Employee service by headquarters response"}
-![Service composite: headquarters yes 4.28 for 57 respondents; headquarters no 4.14 for 71 respondents.](assets/groups.svg)
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 4
+#| dev: svg
+group_means <- tapply(case31$at_emp, case31$q38, mean, na.rm = TRUE)
+plot_bars(group_means, c("Headquarters: yes (n = 57)", "Headquarters: no (n = 71)"), 5, "Mean employee service composite (1–5)")
+```
 
 The descriptive gap is **0.14 points** on a five-point scale. This comparison does not establish a statistically significant difference or a causal effect.
 :::
@@ -68,5 +116,5 @@ These are recommendations to investigate, not proven causes of satisfaction.
 
 [Return to portfolio](index.qmd) · [Get the original course dataset](https://github.com/jaejungca/case31/blob/main/Case%2031%20Data_efcu_Prepped.sav) · [Source files](https://github.com/Brahhmen55/IBM6500-/tree/main/M11)
 
-Run `python scripts/rebuild.py` from the project folder to recalculate the metrics and regenerate charts. The website itself renders without R or Python execution because the verified chart outputs are included.
+Open `M11.Rproj` in RStudio and render this dashboard. Its R chunks read the dataset, calculate the summaries, and draw the charts using base R. The code uses the `foreign`, `knitr`, and `rmarkdown` packages.
 :::

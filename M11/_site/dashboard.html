@@ -216,13 +216,12 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card-header"><div class="card-title"><span style="display: inline">
 Service strengths and improvement areas
 </span></div></div>
-<div class="card-body html-fill-item html-fill-container">
-<div class="quarto-figure quarto-figure-center html-fill-item html-fill-container">
-<figure class="figure">
-<p><img src="assets/service.svg" class="img-fluid figure-img"></p>
-<figcaption>Mean employee service ratings: courtesy 4.35, helpfulness 4.31, professionalism 4.08, availability 4.08.</figcaption>
-</figure>
+<div class="cell card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="dashboard_files/figure-html/unnamed-chunk-2-1.svg" class="img-fluid quarto-dashboard-img-contain">
 </div>
+</div>
+<div class="card-body html-fill-item html-fill-container">
 <p>Courtesy leads the four employee measures. Professionalism and availability are tied for the lowest average, although both exceed 4 out of 5. Each item has 128 valid responses.</p>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -234,13 +233,12 @@ Service strengths and improvement areas
 <div class="card-header"><div class="card-title"><span style="display: inline">
 Overall credit union experience
 </span></div></div>
-<div class="card-body html-fill-item html-fill-container">
-<div class="quarto-figure quarto-figure-center html-fill-item html-fill-container">
-<figure class="figure">
-<p><img src="assets/overall.svg" class="img-fluid figure-img"></p>
-<figcaption>Overall ratings: excellent 31, good 71, average 16, poor 2, very poor 1.</figcaption>
-</figure>
+<div class="cell card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="dashboard_files/figure-html/unnamed-chunk-3-1.svg" class="img-fluid quarto-dashboard-img-contain">
 </div>
+</div>
+<div class="card-body html-fill-item html-fill-container">
 <p>102 of 121 valid ratings are excellent or good (<strong>84.3%</strong>). Seven of the 128 records have missing overall ratings and are excluded from this percentage.</p>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -256,13 +254,12 @@ grid-auto-rows: minmax(0, 1fr);">
 <div class="card-header"><div class="card-title"><span style="display: inline">
 Employee service by headquarters response
 </span></div></div>
-<div class="card-body html-fill-item html-fill-container">
-<div class="quarto-figure quarto-figure-center html-fill-item html-fill-container">
-<figure class="figure">
-<p><img src="assets/groups.svg" class="img-fluid figure-img"></p>
-<figcaption>Service composite: headquarters yes 4.28 for 57 respondents; headquarters no 4.14 for 71 respondents.</figcaption>
-</figure>
+<div class="cell card-body html-fill-item html-fill-container">
+<div class="cell-output-display html-fill-item html-fill-container">
+<img src="dashboard_files/figure-html/unnamed-chunk-4-1.svg" class="img-fluid quarto-dashboard-img-contain">
 </div>
+</div>
+<div class="card-body html-fill-item html-fill-container">
 <p>The descriptive gap is <strong>0.14 points</strong> on a five-point scale. This comparison does not establish a statistically significant difference or a causal effect.</p>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
@@ -300,7 +297,7 @@ Data notes and reproducibility
 <p><strong>Definitions:</strong> Employee service is <code>at_emp</code>, verified against the mean of <code>q3</code>–<code>q6</code> for all 128 records. These items use 1 = strongly disagree to 5 = strongly agree. Headquarters is <code>q38</code> (1 = yes; 2 = no). Overall rating uses original <code>q37</code> codes (1 = excellent; 5 = very poor); missing values are excluded.</p>
 <p><strong>Method:</strong> Unweighted descriptive statistics; available valid responses are used for each measure. This dashboard does not test significance or generalize beyond the supplied sample. The charts use a common 0–5 baseline for the 1–5 service scores.</p>
 <p><a href="./index.html">Return to portfolio</a> · <a href="https://github.com/jaejungca/case31/blob/main/Case%2031%20Data_efcu_Prepped.sav">Get the original course dataset</a> · <a href="https://github.com/Brahhmen55/IBM6500-/tree/main/M11">Source files</a></p>
-<p>Run <code>python scripts/rebuild.py</code> from the project folder to recalculate the metrics and regenerate charts. The website itself renders without R or Python execution because the verified chart outputs are included.</p>
+<p>Open <code>M11.Rproj</code> in RStudio and render this dashboard. Its R chunks read the dataset, calculate the summaries, and draw the charts using base R. The code uses the <code>foreign</code>, <code>knitr</code>, and <code>rmarkdown</code> packages.</p>
 </div>
 <bslib-tooltip placement="auto" bsoptions="[]" data-require-bs-version="5" data-require-bs-caller="tooltip()">
     <template>Expand</template>

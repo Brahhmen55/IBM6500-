@@ -8,9 +8,6 @@ project:
     - listings.qmd
     - projects/*.qmd
     - submission.qmd
-  resources:
-    - assets/
-    - data/metrics.json
 website:
   title: "Brahhmen | Digital Marketing"
   navbar:
