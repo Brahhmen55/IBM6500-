@@ -1,0 +1,25 @@
+---
+title: "M11 Hands-on Practice Submission"
+author: "Brahhmen"
+format:
+  html:
+    embed-resources: false
+    toc: false
+---
+
+## Published portfolio website
+
+[Open my Quarto portfolio website](https://brahhmen55.github.io/IBM6500-/M11/_site/)
+
+## GitHub source repository
+
+[View the source files for my M11 portfolio](https://github.com/Brahhmen55/IBM6500-/tree/main/M11)
+
+## What the website includes
+
+- A homepage introducing my education, skills, and career goals.
+- A Quarto dashboard analyzing the Case 31 credit union survey.
+- A page explaining CSS/SCSS with code and a styled example.
+- A working Quarto listing with categorized project cards.
+
+The Case 31 dashboard uses course case data in place of Culminating Experience project data. Source attribution, variable definitions, missing-data handling, and analysis limitations are provided on the dashboard.

@@ -1,0 +1,20 @@
+/*-- scss:defaults --*/
+$primary: #167d8d;
+$body-bg: #f7f9fa;
+$body-color: #17333b;
+$link-color: #126574;
+$font-family-sans-serif: "Segoe UI", Arial, sans-serif;
+$headings-font-weight: 700;
+$navbar-bg: #17333b;
+/*-- scss:rules --*/
+.hero {background: #e6f0f1; border-left: 6px solid $primary; padding: 2rem; border-radius: 0 18px 18px 0; margin-bottom: 2rem;}
+.eyebrow {color: #126574; text-transform: uppercase; letter-spacing: .14em; font-size: .8rem; font-weight: 700;}
+h1 {letter-spacing: -.035em;}
+h2 {margin-top: 2rem;}
+.skill {display: inline-block; padding: .3rem .75rem; border: 1px solid #bed5da; border-radius: 20px; margin: .2rem; background: white;}
+.example-card {border: 1px solid #bed5da; border-radius: 12px; padding: 1.25rem; background: white; box-shadow: 0 3px 12px #17333b0a;}
+.photo-slot {display: grid; place-content: center; min-height: 210px; background: #d7e6e9; border: 2px dashed #56828c; border-radius: 16px; text-align: center; padding: 1rem;}
+.card {border-radius: 12px;}
+.quarto-listing .card:hover {border-color: $primary;}
+a:focus-visible {outline: 3px solid #b96715; outline-offset: 3px;}
+@media (max-width: 650px) { .hero {padding: 1.25rem;} }

@@ -1,0 +1,9 @@
+---
+title: "Quarto Portfolio: Structure and Styling"
+description: "A consistent visual system built with HTML and SCSS."
+categories: [Web development]
+---
+
+I connected the website pages through `_quarto.yml`, applied shared SCSS variables, and created reusable cards and a responsive homepage. The goal is to help visitors understand my background and find relevant projects quickly.
+
+[See the styling examples](../styling.qmd)

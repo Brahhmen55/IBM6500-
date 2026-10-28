@@ -1,0 +1,58 @@
+---
+title: "A portfolio that grows with my work"
+description: "How Quarto listings organize projects into a searchable collection."
+listing:
+  id: portfolio-projects
+  contents: projects/*.qmd
+  type: grid
+  categories: true
+  sort: "title"
+  fields: [title, description, categories]
+  filter-ui: true
+  sort-ui: true
+---
+
+## What is a Quarto listing?
+
+A listing automatically creates a collection of links from document metadata. Instead of manually rebuilding a project index each time I add work, I can add a QMD file to a folder and render the website. Quarto uses its title, description, and categories to create a new entry.
+
+For a recruiter, this provides a quick way to browse my analytics and website work. For me, it keeps the portfolio organized as I add projects.
+
+## Explore this portfolio
+
+The cards below are a working listing generated from the three project notes in `projects/`. Use the filter field or categories to find a topic. Each card opens a page with context and a link to the relevant work.
+
+::: {#portfolio-projects}
+:::
+
+## How this listing is configured
+
+```yaml
+listing:
+  id: portfolio-projects
+  contents: projects/*.qmd
+  type: grid
+  categories: true
+  sort: "title"
+  fields: [title, description, categories]
+  filter-ui: true
+  sort-ui: true
+```
+
+`contents` chooses the source documents; `type: grid` creates cards; `categories` groups the work; and the filter and sorting controls help visitors explore. A div with the matching ID positions the listing in the page.
+
+Each source document includes front matter such as:
+
+```yaml
+---
+title: "Case 31: Member Experience Dashboard"
+description: "A descriptive survey dashboard for credit union service insights."
+categories: [Analytics, Customer research]
+---
+```
+
+## How I would extend it
+
+For future work, I can add a project file, write a concise description, and assign categories such as SEO, Analytics, or Content. Grid listings suit visual portfolios; table listings are useful for a compact research index; default listings work well for blog posts. The new item appears after the next render and publication.
+
+[Reference: Quarto Document Listings](https://quarto.org/docs/websites/website-listings.html)

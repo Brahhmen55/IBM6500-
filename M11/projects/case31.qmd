@@ -1,0 +1,9 @@
+---
+title: "Case 31: Member Experience Dashboard"
+description: "Survey evidence translated into service insights."
+categories: [Analytics, Customer research]
+---
+
+I summarized 128 survey responses using employee service averages, overall rating counts, and a headquarters comparison. I excluded missing overall ratings from their denominator and kept recommendations separate from evidence.
+
+[Explore the dashboard](../dashboard.qmd)
