@@ -10,17 +10,20 @@ format:
 ## Row
 
 ::: {.valuebox icon="people" color="primary"}
-### Survey respondents
+Survey respondents
+
 128
 :::
 
 ::: {.valuebox icon="person-check" color="info"}
-### Employee service / 5
+Employee service / 5
+
 4.21
 :::
 
 ::: {.valuebox icon="hand-thumbs-up" color="success"}
-### Excellent or good
+Excellent or good
+
 84.3%
 :::
 
