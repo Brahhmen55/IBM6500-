@@ -1,9 +1,0 @@
----
-title: "Quarto Listings: Organizing Project Work"
-description: "An automatically generated collection of portfolio entries."
-categories: [Web development, Content]
----
-
-I used document front matter to create a searchable grid of project notes. Each entry has a title, description, and categories. New entries can be added without manually editing the index cards.
-
-[Return to the working listing](../listings.qmd)
